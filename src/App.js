@@ -2,14 +2,13 @@ import React, { useState } from "react";
 import * as classes from "./App.module.css";
 import axios from 'axios';
 import WeatherData from './WeatherData';
+import {myKey as apiKey} from './keys.json';
 
 function App() {
-
     const [city, setCity] = useState('');
     const [forecast, setForecast] = useState({});
     const [error, setError] = useState('');
     const [tempUnit, setTempUnit] = useState('celsius');
-    const apiKey = '5e0d4cf71fa108bfda4fcde6212092ec';
 
     const handleChange = (event) => {
         let city = event.target.value;
