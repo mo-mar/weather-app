@@ -1,57 +1,58 @@
 import React, { useState } from "react";
 import * as classes from "./App.module.css";
+import axios from 'axios';
+import WeatherData from './WeatherData';
 
 function App() {
-    const [city, setCity] = useState("");
-    const [cityKey, setCityKey] = useState(null);
+
+    const [city, setCity] = useState('');
     const [forecast, setForecast] = useState({});
-    const [dailyHigh, setDailyHigh] = useState('');
-    const [dailyLow, setDailyLow] = useState('');
+    const [error, setError] = useState('');
+    const [tempUnit, setTempUnit] = useState('celsius');
+    const apiKey = '5e0d4cf71fa108bfda4fcde6212092ec';
 
-    function handleChange(e) {
-        setCity(e.target.value);
+    const handleChange = (event) => {
+        let city = event.target.value;
+        setCity(city);
     }
 
-    async function fetchCityKey() {
-        let cityInfo = await fetch(
-            `http://dataservice.accuweather.com/locations/v1/cities/search?apikey=wHt3xF6xVQGmPslYZJCZ1bg7MhzYFsDp&q=${city}`
-        );
-        let response = await cityInfo.json();
-        setCityKey(response[0].Key);
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        getForecast();
     }
 
-    async function fetchDailyForecast() {
-        if (!cityKey) { return; }
-        let forecastData = await fetch(
-            `http://dataservice.accuweather.com/forecasts/v1/daily/1day/${cityKey}?apikey=wHt3xF6xVQGmPslYZJCZ1bg7MhzYFsDp`
-        );
-        let response = await forecastData.json();
-        console.log(response);
-        setForecast(response);
+    const handleDropdownChange = () => {
+        if (tempUnit === 'celsius') {
+            setTempUnit("fahrenheit");
+        }
+        else {
+            setTempUnit('celsius');
+        }
     }
 
-    async function handleSubmit(e) {
-        e.preventDefault();
-        await fetchCityKey();
-        await fetchDailyForecast();
-    }
-
-    if (forecast.DailyForecasts) {
-        setDailyHigh(forecast.DailyForecasts[0].Temperature.Maximum.Value);
-        setDailyLow(forecast.DailyForecasts[0].Temperature.Minimum.Value);
+    const getForecast = async () => {
+        await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`).then(response => {
+            setForecast(response.data);
+        }).catch(error => {
+            setError(error);
+        });
     }
 
     return (
         <div className={classes.App}>
             <h1>Weather App</h1>
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <input onChange={(e) => handleChange(e)} />
+            <label htmlFor="unit">
+                <p>Show temperatures in</p>
+                <select id="unit" onChange={handleDropdownChange}>
+                    <option value="celcius">Celcius</option>
+                    <option value="celcius">Fahrehnheit</option>
+                </select>
+            </label>
+            <form onSubmit={handleSubmit}>
+                <input type="text" onChange={(e) => handleChange(e)}/>
                 <button>BUTTON</button>
             </form>
-            <div>
-                {forecast.length ? <div>Today's weather is: A high of {forecast.DailyForecasts[0].Temperature.Maximum.Value} and a low of {dailyLow} </div> : null}
-                
-            </div>
+            {forecast.main ? <WeatherData data={forecast} unit={tempUnit}/> : null}
         </div>
     );
 }
