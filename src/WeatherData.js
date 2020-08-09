@@ -9,15 +9,13 @@ const WeatherData = (props) => {
     return (Kelvin * 1.8 - 459.67).toFixed();
   };
 
-  const high =
-      props.unit === "celsius"
-          ? `${_convertKelvinToC(props.data.main.temp_max)} ºC`
-          : `${_convertKelvinToF(props.data.main.temp_max)} °F`;
+  const high = props.unit === "celsius" 
+    ? `${_convertKelvinToC(props.data.main.temp_max)} ºC`
+    : `${_convertKelvinToF(props.data.main.temp_max)} °F`;
 
-  const low =
-      props.unit === "celsius"
-          ? `${_convertKelvinToC(props.data.main.temp_min)} ºC`
-          : `${_convertKelvinToF(props.data.main.temp_min)} °F`;
+  const low = props.unit === "celsius"
+    ? `${_convertKelvinToC(props.data.main.temp_min)} ºC`
+    : `${_convertKelvinToF(props.data.main.temp_min)} °F`;
 
   return (
     <div>
