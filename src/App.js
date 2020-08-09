@@ -31,7 +31,7 @@ function App() {
     }
 
     const getForecast = async () => {
-        await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`).then(response => {
+        await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`).then(response => {
             setForecast(response.data);
         }).catch(error => {
             setError(error);
