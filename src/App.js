@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import * as classes from "./App.module.css";
 import axios from 'axios';
-import WeatherData from './WeatherData';
+import WeatherData from './Components/WeatherData';
+import WeatherForm from './Components/WeatherForm';
 import {myKey as apiKey} from './keys.json';
+import './App.css';
+import * as classes from './App.module.css';
 
 function App() {
     const [city, setCity] = useState('');
@@ -33,25 +35,22 @@ function App() {
         await axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`).then(response => {
             setForecast(response.data);
         }).catch(error => {
-            setError(error);
+            setError(error.response.data.message);
         });
     }
+
+    
 
     return (
         <div className={classes.App}>
             <h1>Weather App</h1>
-            <label htmlFor="unit">
-                <p>Show temperatures in</p>
-                <select id="unit" onChange={handleDropdownChange}>
-                    <option value="celcius">Celcius</option>
-                    <option value="celcius">Fahrehnheit</option>
-                </select>
-            </label>
-            <form onSubmit={handleSubmit}>
-                <input type="text" onChange={(e) => handleChange(e)}/>
-                <button>BUTTON</button>
-            </form>
+            <WeatherForm
+                handleSubmit={handleSubmit}
+                handleDropdownChange={handleDropdownChange}
+                handleChange={handleChange}
+            />
             {forecast.main ? <WeatherData data={forecast} unit={tempUnit}/> : null}
+            {error ? `Error: ${error}` : null}
         </div>
     );
 }
