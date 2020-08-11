@@ -18,8 +18,8 @@ export default function WeatherForm(props) {
           <label htmlFor="unit">
             <span>Show temperatures in</span>
             <Select id="unit" onChange={props.handleDropdownChange}>
-              <option value="celcius">Celcius</option>
-              <option value="celcius">Fahrehnheit</option>
+              <option value="celsius">Celcius</option>
+              <option value="fahrenheit">Fahrenheit</option>
             </Select>
           </label>
           <input type="text" onChange={(e) => props.handleChange(e)} />

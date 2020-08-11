@@ -27,15 +27,15 @@ const WeatherData = (props) => {
     `${parseInt(props.data.main.temp).toFixed()} ºC`
     : `${_convertCelsiusToF(props.data.main.temp)} °F`
 
-  const highInCelcius = parseInt(props.data.main.temp_max).toFixed();
-  const lowInCelcius = parseInt(props.data.main.temp_min).toFixed();
+  const highInCelsius = parseInt(props.data.main.temp_max).toFixed();
+  const lowInCelsius = parseInt(props.data.main.temp_min).toFixed();
 
   const high = props.unit === "celsius" 
-    ? highInCelcius + ' ºC'
+    ? highInCelsius + ' ºC'
     : `${_convertCelsiusToF(props.data.main.temp_max)} °F`;
 
   const low = props.unit === "celsius"
-    ? lowInCelcius + ' ºC'
+    ? lowInCelsius + ' ºC'
     : `${_convertCelsiusToF(props.data.main.temp_min)} °F`;
 
   return (
