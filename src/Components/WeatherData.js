@@ -3,11 +3,11 @@ import '../App.css';
 import styled from "styled-components";
 
 const TempContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
 `;
 
 const CityName = styled.div`
@@ -17,8 +17,6 @@ const CityName = styled.div`
 
 const WeatherData = (props) => {
 
-  
-  
   const _convertCelsiusToF = (C) => {
     return (C * 1.8 + 32).toFixed();
   };
@@ -39,7 +37,7 @@ const WeatherData = (props) => {
     : `${_convertCelsiusToF(props.data.main.temp_min)} °F`;
 
   return (
-    <TempContainer className="u-flex">
+    <TempContainer data-testid="weather-data" className="u-flex">
         <CityName>
           {props.data.name}, {props.data.sys.country}
         </CityName>
