@@ -1,5 +1,8 @@
 {
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
-  }
+  },
+  "prettier.requireConfig": true,
+  "editor.tabSize": 2,
+  "prettier.useEditorConfig": false
 }

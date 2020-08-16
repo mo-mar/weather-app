@@ -1,15 +1,14 @@
 .App {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+  font-family: "Lato", sans-serif;
 }
 
 .wrapper {
-    width: 100%;
-    max-width: 1280px;
-}
-
-.WeatherForm {
-    margin-bottom: 12px;
+  width: 100vw;
+  max-width: 1680px;
+  background: #a1d6e2;
+  margin: 0 auto;
 }
