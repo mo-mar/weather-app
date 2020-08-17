@@ -1,11 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 
-// #F1F1F2 - OVERCAST
-// #BCBABE  - Warm Gray
-// #A1D6E2 - ICE
-// #1995AD - GLACIER BLUE
-
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
