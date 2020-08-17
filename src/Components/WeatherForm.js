@@ -20,10 +20,11 @@ const Input = styled.div`
   position: relative;
   input {
     border: none;
-    padding: 6px 2px;
+    padding: 10px 2px;
+    width: 220px;
   }
   input:focus {
-    outline: 1px solid tomato;
+    outline: 1px solid black;
   }
   i {
     margin-left: 4px;

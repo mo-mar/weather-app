@@ -1,9 +1,11 @@
 .App {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: auto 0.5fr 2fr auto;
+  justify-content: center;
   align-items: center;
   height: 100vh;
   font-family: "Lato", sans-serif;
+  position: relative;
 }
 
 .wrapper {
@@ -11,4 +13,11 @@
   max-width: 1680px;
   background: #a1d6e2;
   margin: 0 auto;
+}
+
+footer {
+  align-self: end;
+  justify-self: start;
+  text-align: center;
+  width: 100%;
 }

@@ -54,17 +54,45 @@ function App() {
   return (
     <div className={classes.wrapper}>
       <div className={classes.App}>
-        <h1 className="mb-8 u-text-center">Weather App</h1>
-        <UnitSelector
-          className={classes.unitSelector}
-          handleDropdownChange={handleDropdownChange}
-          unit={tempUnit}
-        />
-        <WeatherForm handleSubmit={handleSubmit} handleChange={handleChange} />
-        {forecast.main ? (
-          <WeatherData className="mb-8" data={forecast} unit={tempUnit} />
-        ) : null}
-        <Error error={error} />
+        <h1 className="u-text-center">My Generic Weather App</h1>
+        <div>
+          <UnitSelector
+            className={classes.unitSelector}
+            handleDropdownChange={handleDropdownChange}
+            unit={tempUnit}
+          />
+          <WeatherForm
+            handleSubmit={handleSubmit}
+            handleChange={handleChange}
+          />
+        </div>
+        <div class="l-grid-align-self-start">
+          {forecast.main ? (
+            <WeatherData className="mb-8" data={forecast} unit={tempUnit} />
+          ) : null}
+          <Error error={error} />
+        </div>
+        <footer>
+          <div>
+            Made by{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://github.com/mo-mar"
+            >
+              Mohamed Omar.{" "}
+            </a>
+            <br />
+            All data pulled from{" "}
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://openweathermap.org/"
+            >
+              OpenWeatherMap.
+            </a>{" "}
+          </div>
+        </footer>
       </div>
     </div>
   );

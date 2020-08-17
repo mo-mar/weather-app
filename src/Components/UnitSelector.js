@@ -4,32 +4,31 @@ import styled from "styled-components";
 const StyledUnitSelector = styled.div``;
 
 const UnitContainer = styled.div`
-  display: inline-block;
-  background: papayawhip;
   padding: 8px 0;
-  border: 2px solid black;
-  border-radius: 5px;
+  display: block;
+  width: 100%;
+  text-align: center;
 `;
 
 const CelsiusIcon = styled.span`
-  width: 50%;
   background-color: ${(props) => props.color};
   padding: 8px 18px;
   color: white;
   font-size: 22px;
   transition: all 0.3s;
+  border-radius: 10px;
   i {
-    color: tomato;
+    color: #1995ad;
   }
 `;
 
 const FahrenheitIcon = styled.span`
-  width: 50%;
   background-color: ${(props) => props.color};
   padding: 8px 18px;
   color: white;
   font-size: 22px;
   transition: all 0.2s;
+  border-radius: 10px;
   i {
     color: tomato;
   }
