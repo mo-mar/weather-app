@@ -38,13 +38,13 @@ export default function UnitSelector(props) {
   return (
     <StyledUnitSelector>
       {/* <span>Show temperatures in</span> */}
-      <UnitContainer onClick={props.handleDropdownChange}>
+      <UnitContainer onClick={props.handleUnitChange}>
         <CelsiusIcon
           color={props.unit === "celsius" ? "#1995AD" : "white"}
           className="celsius"
         >
           {props.unit === "fahrenheit" ? (
-            <i class="fas fa-thermometer-half"></i>
+            <i className="fas fa-thermometer-half"></i>
           ) : (
             <span>C</span>
           )}
@@ -54,7 +54,7 @@ export default function UnitSelector(props) {
           className="fahrenheit"
         >
           {props.unit === "celsius" ? (
-            <i class="fas fa-thermometer-half"></i>
+            <i className="fas fa-thermometer-half"></i>
           ) : (
             <span>F</span>
           )}

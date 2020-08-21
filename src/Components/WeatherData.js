@@ -138,10 +138,10 @@ const WeatherData = (props) => {
           </div>
         </HighAndLow>
         <Humidity title="humidity">
-          <i class="fas fa-tint"></i> {humidity}
+          <i className="fas fa-tint"></i> {humidity}
         </Humidity>
         <Windspeed title="wind speed">
-          <i class="fas fa-wind"></i>
+          <i className="fas fa-wind"></i>
           {windSpeed}
         </Windspeed>
       </SecondaryData>

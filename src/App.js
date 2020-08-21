@@ -24,7 +24,7 @@ function App() {
     getForecast();
   };
 
-  const handleDropdownChange = () => {
+  const handleUnitChange = () => {
     if (tempUnit === "celsius") {
       setTempUnit("fahrenheit");
     } else {
@@ -32,9 +32,9 @@ function App() {
     }
   };
 
-  const getForecast = async () => {
+  const getForecast = () => {
     setError("");
-    await axios
+    axios
       .get(
         `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
       )
@@ -58,7 +58,7 @@ function App() {
         <div>
           <UnitSelector
             className={classes.unitSelector}
-            handleDropdownChange={handleDropdownChange}
+            handleUnitChange={handleUnitChange}
             unit={tempUnit}
           />
           <WeatherForm
@@ -66,7 +66,7 @@ function App() {
             handleChange={handleChange}
           />
         </div>
-        <div class="l-grid-align-self-start">
+        <div className="l-grid-align-self-start">
           {forecast.main ? (
             <WeatherData className="mb-8" data={forecast} unit={tempUnit} />
           ) : null}

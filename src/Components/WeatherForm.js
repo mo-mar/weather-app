@@ -34,7 +34,7 @@ const Input = styled.div`
 export default function WeatherForm(props) {
   return (
     <StyledForm onSubmit={props.handleSubmit} data-testid="weather-form">
-      <Input>
+      <Input data-test-id="weather-input">
         <input
           placeholder="Location"
           type="text"
