@@ -36,7 +36,7 @@ function App() {
     setError("");
     axios
       .get(
-        `http://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${apiKey}`
       )
       .then((response) => {
         setForecast(response.data);

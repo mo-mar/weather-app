@@ -101,7 +101,7 @@ const WeatherData = (props) => {
       : `${_convertCelsiusToF(props.data.main.temp_min)} °F`;
 
   const iconId = props.data.weather[0].icon;
-  const iconURL = `http://openweathermap.org/img/wn/${iconId}@2x.png`;
+  const iconURL = `https://openweathermap.org/img/wn/${iconId}@2x.png`;
 
   const feelsLikeTemp =
     props.unit === "celsius"
